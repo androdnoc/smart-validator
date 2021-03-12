@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- meta -->
+	<meta charset="utf-8">
+
+	<!-- vuejs framework -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	<!-- material design icons -->
+	<link type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+
+	<!-- bulma css -->
+	<link rel="stylesheet" type="text/css" href="bulma.css">
+
+</head>
+<body>
+
+	<section class="section">
+		<div class="container">
+			<div id="app">
+				<div class="content">
+					<div class="columns">
+						<div class="column is-half">
+							<div class="field">
+								<label class="label">Latitude</label>
+								<div class="help has-text-grey-light">
+									<ul>
+										<li>When inputted, the calculated value will appear below based on the input given.</li>
+										<li>If the input type is not supported, an error message is returned.</li>
+									</ul>
+								</div>
+								<br>
+								<div class="control">
+									<input v-model.lazy="inputLatN.input" v-bind:class="{'is-danger': !inputLatN.valid && inputLatN.valid != undefined}" class="input">
+								</div>
+								<div style="min-height: 18px;">
+									<p v-if="inputLatN.valid" class="help has-text-grey-light">Computed Value: [[inputLatN.value]]</p>
+									<p v-else class="help has-text-danger">[[inputLatN.errorMessage]]</p>
+								</div>
+							</div>
+
+							<div>
+								<button class="button" v-on:click="inputLatN.reset()">Reset</button>
+							</div>
+
+							<br>
+
+							<div class="help has-text-grey-light">
+								<p>Errors Captured:</p>
+								<ul>
+									<li>Value format not supported.</li>
+									<li>Negative value cannot be given with direction notation.</li>
+									<li>Input is required.</li>
+									<li>West/East values cannot be given for latitude.</li>
+									<li>Latitude cannot be less than -89.</li>
+									<li>Latitude cannot be greater than 89.</li>
+								</ul>
+							</div>
+
+						</div>
+						
+						<div class="column is-half">
+							<div class="field">
+								<label class="label">Longitude</label>
+								<div class="help has-text-grey-light">
+									<ul>
+										<li>When inputted, the calculated value will appear below based on the input given.</li>
+										<li>If the input type is not supported, an error message is returned.</li>
+									</ul>
+								</div>
+								<br>
+								<div class="control">
+									<input v-model.lazy="inputLngW.input" v-bind:class="{'is-danger': !inputLngW.valid && inputLngW.valid != undefined}" class="input">
+								</div>
+								<div style="min-height: 18px;">
+									<p v-if="inputLngW.valid" class="help has-text-grey-light">Computed Value: [[inputLngW.value]]</p>
+									<p v-else class="help has-text-danger">[[inputLngW.errorMessage]]</p>
+								</div>
+							</div>
+
+							<div>
+								<button class="button" v-on:click="inputLatW.reset()">Reset</button>
+							</div>
+
+							<br>
+							
+							<div class="help has-text-grey-light">
+								<p>Errors Captured:</p>
+								<ul>
+									<li>Value format not supported.</li>
+									<li>Negative value cannot be given with direction notation.</li>
+									<li>Input is required.</li>
+									<li>North/South values cannot be given for longitude.</li>
+									<li>Longitude cannot be less than -180.</li>
+									<li>Longitude cannot be greater than 360.</li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+
+					<hr>
+
+					<div class="columns">
+						<div class="column is-one-third">
+							<h5>Valid Input examples</h5>
+							<ul class="is-family-monospace">
+								<li>45</li>
+								<li>-45.30</li>
+								<li>45 45.30</li>
+								<li>45 45 45.30 S</li>
+								<li>45 45 45 N</li>
+								<li>-45 45 45</li>
+								<li>45,45,45 S</li>
+							</ul>
+						</div>
+						<div class="column is-two-thirds">
+							<h5>Input Syntax</h5>
+							<img src="img.png">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script type="text/javascript" src="SmartValidator.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
