@@ -176,7 +176,7 @@ function SmartValidator(rules, preprocessor) {
 	})
 
 	// push rules if given
-	if(rules != undefined && rules.length > 1) {
+	if(rules != undefined && rules.length > 0) {
 		for(let i of rules) {
 			this._rules.push(i)
 		}
@@ -296,7 +296,7 @@ function latLngPreProcessor(input) {
 			if(/^[NSWEnsdwe]$/.test(vals[vals.length -1].slice(-1))) {
 
 				// if final value and dir have not been seperated in split (user did not use whitespace between final value and dir)
-				if(vals[vals.length -1].length > 1) {
+				if(vals[vals.length -1].length > 0) {
 					dir = vals[vals.length -1].slice(-1)
 					vals[vals.length -1] = vals[vals.length -1].slice(0, -1)
 
